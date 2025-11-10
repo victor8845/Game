@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: pink;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  h1 {
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+  }
+
+  .botoes {
+    margin-top: 20px;
+    position: relative;
+    width: 100%;
+    height: 50vh;
+  }
+
+  button {
+    position: absolute;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background-color: #ff69b4;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  #nao {
+    background-color: #ff4d4d;
+  }
+
+  #sim {
+    background-color: #4CAF50;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 60%;
+  }
+
+</style>
+</head>
+<body>
+
+  <h1>Voce da a bunda?</h1>
+
+  <div class="botoes">
+    <button id="sim" onclick="responderSim()">Sim</button>
+    <button id="nao" ontouchstart="fugir()" onmouseover="fugir()">Não</button>
+  </div>
+
+<script>
+  const nao = document.getElementById("nao");
+  const botoesArea = document.querySelector(".botoes");
+
+  function fugir() {
+    // Define limites de movimento dentro da área
+    const areaWidth = botoesArea.clientWidth - nao.offsetWidth;
+    const areaHeight = botoesArea.clientHeight - nao.offsetHeight;
+
+    const x = Math.random() * areaWidth;
+    const y = Math.random() * areaHeight;
+
+    nao.style.left = `${x}px`;
+    nao.style.top = `${y}px`;
+  }
+
+  function responderSim() {
+    document.body.innerHTML = `
+      <h1> Nada fora do padrão! </h1>
+      <p style="font-size:1.5em;"></p>
+    `;
+  }
+</script>
+
+</body>
+</html>
